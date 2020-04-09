@@ -1,3 +1,4 @@
+
 # Puma can serve each request in a thread from an internal thread pool.
 # The `threads` method setting takes two numbers: a minimum and maximum.
 # Any libraries that use thread pools should be configured to match
@@ -18,6 +19,13 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 
 # Specifies the `pidfile` that Puma will use.
 pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
+
+after_worker_boot do
+  require 'prometheus_exporter'
+  require 'prometheus_exporter/instrumentation'
+  # Set up Prometheus instrumentation.
+  PrometheusExporter::Instrumentation::ActiveRecord.start
+end
 
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked web server processes. If using threads and workers together

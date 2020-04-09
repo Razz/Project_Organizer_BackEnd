@@ -14,6 +14,9 @@ require "action_view/railtie"
 require "action_cable/engine"
 # require "sprockets/railtie"
 # require "rails/test_unit/railtie"
+require 'prometheus_exporter'
+require 'prometheus_exporter/client'
+require 'prometheus_exporter/middleware'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -40,6 +43,8 @@ module ProjectOrganizerBackend
         ENV[key.to_s] = value
       end if File.exists?(env_file)
     end
+
+    Rails.application.middleware.unshift PrometheusExporter::Middleware
     
   end
 end
