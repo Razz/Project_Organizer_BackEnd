@@ -40,6 +40,20 @@ module ProjectOrganizerBackend
         ENV[key.to_s] = value
       end if File.exists?(env_file)
     end
-    
+
+    config.rails_semantic_logger.semantic   = true
+    config.rails_semantic_logger.started    = true
+    config.rails_semantic_logger.processing = true
+    config.rails_semantic_logger.rendered   = true
+    config.semantic_logger.backtrace_level = :info
+    config.log_level = :debug
+    config.rails_semantic_logger.format = :json
+
+    config.log_tags = {
+      request_id: :request_id,
+      ip:         :remote_ip,
+      user:       -> request { request.cookie_jar['login'] },
+      correlation_id: "xxxx-xxxx-xxxx-xxxx"
+    }
   end
 end

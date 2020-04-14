@@ -1,10 +1,13 @@
 class ProjectCardsController < ApplicationController
+    include SemanticLogger::Loggable
 
     def create
+        logger.info("Creating a project with params #{project_card_params}")
         render json: ProjectCard.create(project_card_params);
     end
 
     def index
+        logger.info("Getting all project card")
         render json: ProjectCard.all
     end
 
