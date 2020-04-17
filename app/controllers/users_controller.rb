@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
     def create
-      render json: User.create(user_params);
+      render json: user = User.create(user_params);
+      puts "User Created user: #{user}"
     end
 
     def index
@@ -11,6 +12,7 @@ class UsersController < ApplicationController
     def update
       user = User.find(params[:id])
       render json: user.update(user_params)
+      puts "User upodated with #{user_params}"
     end
 
     private
