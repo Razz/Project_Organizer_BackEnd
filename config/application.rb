@@ -41,7 +41,8 @@ module ProjectOrganizerBackend
       end if File.exists?(env_file)
     end
 
-    config.rails_semantic_logger.semantic   = true
+    OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+
     config.rails_semantic_logger.started    = true
     config.rails_semantic_logger.processing = true
     config.rails_semantic_logger.rendered   = true
