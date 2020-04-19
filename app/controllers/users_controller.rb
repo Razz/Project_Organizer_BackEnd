@@ -1,21 +1,27 @@
+require 'opentracing'
 class UsersController < ApplicationController
-
-    def create
+  def create
+    OpenTracing.start_active_span(self.class.to_s + '_' + __method__.to_s) do |scope|
       render json: User.create(user_params);
     end
+  end
 
-    def index
+  def index
+    OpenTracing.start_active_span(self.class.to_s + '_' + __method__.to_s) do |scope|
       render json: User.all
     end
+  end
 
-    def update
+  def update
+    OpenTracing.start_active_span(self.class.to_s + '_' + __method__.to_s) do |scope|
       user = User.find(params[:id])
       render json: user.update(user_params)
     end
+  end
 
-    private
+  private
 
-    def user_params
-      params.require(:user).permit(:name, :username, :password_digest)
-    end
+  def user_params
+    params.require(:user).permit(:name, :username, :password_digest)
+  end
 end
