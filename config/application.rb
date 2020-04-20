@@ -43,11 +43,10 @@ module ProjectOrganizerBackend
 
     OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
-    # config.rails_semantic_logger.started    = true
-    # config.rails_semantic_logger.processing = true
-    # config.rails_semantic_logger.rendered   = true
-    # config.semantic_logger.backtrace_level = :info
-    config.log_level = :trace
+    config.rails_semantic_logger.started    = true
+    config.rails_semantic_logger.processing = true
+    config.rails_semantic_logger.rendered   = true
+    config.semantic_logger.backtrace_level = :info
     config.rails_semantic_logger.format = :json
     
     # config.log_tags = {
