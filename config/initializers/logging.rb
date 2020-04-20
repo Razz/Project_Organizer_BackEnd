@@ -24,7 +24,7 @@ log_level = if ENV['LOG_LEVEL'].present?
             end
 SemanticLogger.add_appener(
   appender: :tcp,
-  server: ENV['SPLUNK_HOST']:ENV['SPLUNK_PORT'],
+  server: "#{ENV['SPLUNK_HOST']}:#{ENV['SPLUNK_PORT']}",
   formatter: formatter,
   ssl: false
 )
