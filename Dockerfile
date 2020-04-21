@@ -1,4 +1,4 @@
-FROM ruby:2.6.1-alpine
+FROM razzyp/sre_wa:base
 MAINTAINER Carlos Nunez <dev@carlosnunez.me>
 
 RUN apk add --no-cache ruby-dev  ruby-nokogiri build-base libxml2-dev \
