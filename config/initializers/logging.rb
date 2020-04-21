@@ -28,8 +28,11 @@ SemanticLogger.add_appender(
   formatter: formatter,
   ssl: false
 )
-SemanticLogger.add_appender(
-  io: STDOUT,
-  level: log_level,
-  formatter: config.rails_semantic_logger.format
-)
+
+Rails.application.configure do
+  SemanticLogger.add_appender(
+    io: STDOUT,
+    level: log_level,
+    formatter: config.rails_semantic_logger.format
+  )
+end
