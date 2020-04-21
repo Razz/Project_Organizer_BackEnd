@@ -5,6 +5,12 @@ ruby '2.6.1'
 gem 'awesome_print'
 gem 'rails_semantic_logger'
 gem 'net_tcp_client'
+
+# Add Prometheus
+gem 'prometheus_exporter'
+
+# Add OpenTracing middleware
+gem 'jaeger-client'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 # Use postgresql as the database for Active Record

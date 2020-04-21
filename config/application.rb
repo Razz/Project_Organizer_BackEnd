@@ -14,6 +14,9 @@ require "action_view/railtie"
 require "action_cable/engine"
 # require "sprockets/railtie"
 # require "rails/test_unit/railtie"
+require 'prometheus_exporter'
+require 'prometheus_exporter/client'
+require 'prometheus_exporter/middleware'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -48,6 +51,7 @@ module ProjectOrganizerBackend
     config.rails_semantic_logger.rendered   = true
     config.semantic_logger.backtrace_level = :info
     config.rails_semantic_logger.format = :json
+    Rails.application.middleware.unshift PrometheusExporter::Middleware
     
     # config.log_tags = {
     #   request_id: :request_id,
