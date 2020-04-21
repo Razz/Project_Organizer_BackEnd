@@ -30,6 +30,6 @@ SemanticLogger.add_appener(
 )
 SemanticLogger.add_appender(
   io: STDOUT,
-  level: log_level
+  level: log_level,
   formatter: config.rails_semantic_logger.format
 )
